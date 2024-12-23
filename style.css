@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    height: 100vh;
+}
+
+#container_form{
+    background-color: white;
+    border-radius: 20px;
+    height: 12rem;
+    padding-bottom: 14rem;
+}
+
+#container_taks{
+    background-color: white;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+#div_input_btn{
+    position: relative;
+}
+
+input[type="text"]{
+    border-radius: 14px !important;
+    font-size: 20px;
+}
+
+#btn_add{
+    background-color: rgb(93, 212, 93);
+    width: 80px;
+    height: 100%;
+    border-start-start-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: absolute;
+    right: 12.5px;
+    bottom: 0;
+}
+
+#btn_add > img{
+    margin-bottom: 2px;
+}
+
+#minhaLI{
+    padding: 0;
+}
+
+.item_lista{
+    list-style: none;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.div_checkSpan{
+    display: flex;
+}
+
+.div_btnExcluir{
+    display: flex;
+    padding: 7px 22px 0 4px;
+}
+
+.item_lista > div span{
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: #333;
+    padding-left: 15px;
+}
+
+.item_lista > div input{
+    border-radius: 50px !important;
+    margin-top: 6px;
+}
+
+.item_lista > div input:checked{
+    background-color: rgb(93, 212, 93) !important;
+}
+
+.item_lista > div button{
+    background-image: url(images/clear.png);
+    background-size: 18px;
+    object-fit: cover;
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
+    border: none;
+}
+
+.concluido{
+    color: grey !important;
+    text-decoration: line-through;
+}
+
+.span_erro{
+    color: red;
+    text-align: center;
+    margin-top: 7px !important;
+}

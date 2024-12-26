@@ -1,103 +1,143 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container{
-    height: 100vh;
+.container {
+  height: 100vh;
 }
 
-#container_form{
-    background-color: white;
-    border-radius: 20px;
-    height: 12rem;
-    padding-bottom: 14rem;
+#container_form {
+  background-color: white;
+  border-radius: 20px;
+  height: 17.2rem;
+  padding-bottom: 14rem;
 }
 
-#container_taks{
-    background-color: white;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+#container_taks {
+  background-color: white;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
-#div_input_btn{
-    position: relative;
+#div_input_btn {
+  position: relative;
 }
 
-input[type="text"]{
-    font-size: 20px;
+input[type="text"] {
+  font-size: 15px;
 }
 
-#btn_add{
-    background-color: rgb(93, 212, 93);
-    width: 80px;
-    height: 100%;
-    border-start-start-radius: 20px;
-    border-bottom-left-radius: 20px;
-    position: absolute;
-    right: 12.5px;
-    bottom: 0;
+#btn_add {
+  background-color: rgb(93, 212, 93);
+  width: 80px;
+  height: 100%;
+  border-start-start-radius: 20px;
+  border-bottom-left-radius: 20px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
-#btn_add > img{
-    margin-bottom: 2px;
+.btnAddComErroSpan{
+    height: 60.5% !important;
+    bottom: 24px !important;
 }
 
-#minhaLI{
-    padding: 0;
+#btn_add > img {
+  margin-bottom: 2px;
 }
 
-.item_lista{
-    list-style: none;
-    font-size: 20px;
-    display: flex;
-    justify-content: space-between;
+#checkDescricao {
+  font-size: 15px;
+  margin-top: 8px;
 }
 
-.div_checkSpan{
-    display: flex;
+#checkDescricao:checked {
+  background-color: rgb(93, 212, 93);
 }
 
-.div_btnExcluir{
-    display: flex;
-    padding: 7px 22px 0 4px;
+.lblCheckDescricao {
+  font-size: 13px;
+  margin-top: 5.5px;
+  color: #787878;
 }
 
-.item_lista > div span{
-    display: flex;
-    align-items: center;
-    font-weight: 500;
-    color: #333;
-    padding-left: 15px;
+#container_descricao {
+  display: none;
 }
 
-.item_lista > div input{
-    border-radius: 50px !important;
-    margin-top: 6px;
+#checkDescricao:checked ~ #container_descricao {
+  display: block;
 }
 
-.item_lista > div input:checked{
-    background-color: rgb(93, 212, 93) !important;
+#minhaLI {
+  padding: 0;
 }
 
-.item_lista > div button{
-    background-image: url(images/clear.png);
-    background-size: 18px;
-    object-fit: cover;
-    width: 18px;
-    height: 18px;
-    background-color: transparent;
-    border: none;
+.item_lista {
+  list-style: none;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.concluido{
-    color: grey !important;
-    text-decoration: line-through;
+.div_checkSpan {
+  display: flex;
 }
 
-.span_erro{
-    color: red;
-    text-align: center;
-    margin-top: 7px !important;
+.div_btns {
+  display: flex;
+  padding: 7px 22px 0 4px;
+}
+
+.item_lista > div span {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #333;
+  padding-left: 15px;
+}
+
+.item_lista > div input {
+  border-radius: 50px !important;
+  margin-top: 6px;
+}
+
+.item_lista > div input:checked {
+  background-color: rgb(93, 212, 93) !important;
+}
+
+.btn_excluir {
+  background-image: url(images/clear.png);
+  background-size: 18px;
+  object-fit: cover;
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  border: none;
+}
+
+.btn_editar {
+  background-image: url(images/editar.png);
+  background-size: 18px;
+  object-fit: cover;
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  border: none;
+  margin-right: 12px;
+}
+
+.concluido {
+  color: grey !important;
+  text-decoration: line-through;
+}
+
+.span_erro {
+  color: red;
+  font-size: 10px;
+  text-align: center;
+  margin-top: 7px !important;
 }

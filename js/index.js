@@ -61,9 +61,10 @@ function criarItemLista() {
         span.textContent = tarefa.task;
 
         btnExcluir.addEventListener("click", () => {
-            if (tarefa.check === false){
-                alert("Para excluir tem que concluir a tarefa!");
-            } else{
+            if (tarefa.check === false) {
+                const modalExcluir = new bootstrap.Modal(document.getElementById("modalExcluir"));
+                modalExcluir.show();
+            } else {
                 excluirTarefa(tarefa.id);
             }
         });
@@ -92,16 +93,20 @@ function criarItemLista() {
 
 function excluirTarefa(id) {
     for (let i = 0; i < arrayLista.length; i++) {
-      if (arrayLista[i].id == id) {
-        if (confirm("Deseja realmente excluir essa tarefa?")) {
-        arrayLista.splice(i, 1);
-        alert("Tarefa excluída com sucesso!");
-        criarItemLista();
-        break;
+        if (arrayLista[i].id == id) {
+            const modalConfirmarExcluir = new bootstrap.Modal(document.getElementById("modalConfirmarExcluir"));
+            modalConfirmarExcluir.show();
+
+            document.getElementById("btnConfirmarExcluir").onclick = function() {
+                arrayLista.splice(i, 1);
+                criarItemLista();
+                modalConfirmarExcluir.hide();
+            };
+            break;
         }
-      }
     }
 }
+
 
 function erroInputVazio(){
     const inputs = document.querySelectorAll("#container_form input");

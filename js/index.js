@@ -1,9 +1,11 @@
 const minhaLista = document.querySelector("#minhaLI");
 const inputTask = document.querySelector("#input_task");
+let arrayLista = [];
 let idTarefa = 0;
 
 document.querySelector("#btn_add").addEventListener("click", () => {
     if(inputTask.value !== ""){
+        criarTarefa();
         criarItemLista();
         erroInputVazio();
     } else{
@@ -14,6 +16,7 @@ document.querySelector("#btn_add").addEventListener("click", () => {
 inputTask.addEventListener("keydown", evento => {
     if(evento.key === "Enter"){
         if(inputTask.value !== ""){
+            criarTarefa();
             criarItemLista();
             erroInputVazio();
         } else{
@@ -22,53 +25,81 @@ inputTask.addEventListener("keydown", evento => {
     }
 });
 
-function criarItemLista(){
-    var itemLista = document.createElement("li");
-    const checkBox = document.createElement("input");
-    const span = document.createElement("span");
-    const divCheckSpan = document.createElement("div");
-    const divBtnExcluir = document.createElement("div");
-    const btnExcluir = document.createElement("button");
+function criarTarefa(checkBox = false){
+    const tarefa = {
+        id: ++idTarefa,
+        task: inputTask.value,
+        check: checkBox
+    }
 
-    divCheckSpan.classList.add("div_checkSpan");
+    arrayLista.push(tarefa);
+}
 
-    divBtnExcluir.classList.add("div_btnExcluir");
+function criarItemLista() {
+    minhaLista.innerHTML = "";
 
-    itemLista.dataset.id = ++idTarefa;
-    itemLista.classList.add("item_lista");
+    arrayLista.forEach((tarefa) => {
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        const divCheckSpan = document.createElement("div");
+        const divBtnExcluir = document.createElement("div");
+        const checkBox = document.createElement("input");
+        const btnExcluir = document.createElement("button");
 
-    checkBox.setAttribute("type", "checkbox");
-    checkBox.classList.add("form-check-input");
-    checkBox.addEventListener("click", () => {
-        itemListaConcluido(span, checkBox);
+        divCheckSpan.classList.add("div_checkSpan");
+        divBtnExcluir.classList.add("div_btnExcluir");
+        li.dataset.id = tarefa.id;
+        li.classList.add("item_lista");
+
+        checkBox.setAttribute("type", "checkbox");
+        checkBox.classList.add("form-check-input");
+        checkBox.checked = tarefa.check;
+        if (checkBox.checked) {
+            span.classList.add("concluido");
+        }
+
+        span.textContent = tarefa.task;
+
+        btnExcluir.addEventListener("click", () => {
+            if (tarefa.check === false){
+                alert("Para excluir tem que concluir a tarefa!");
+            } else{
+                excluirTarefa(tarefa.id);
+            }
+        });
+
+        checkBox.addEventListener("click", () => {
+            tarefa.check = checkBox.checked;
+            if (checkBox.checked) {
+                span.classList.add("concluido");
+            } else {
+                span.classList.remove("concluido");
+            }
+        });
+
+        divCheckSpan.appendChild(checkBox);
+        divCheckSpan.appendChild(span);
+        divBtnExcluir.appendChild(btnExcluir);
+        li.appendChild(divCheckSpan);
+        li.appendChild(divBtnExcluir);
+
+        minhaLista.appendChild(li);
     });
-
-    span.textContent = inputTask.value;
-
-    btnExcluir.addEventListener("click", () => {
-        excluirItemLista(minhaLista, itemLista);
-    });
-
-    divCheckSpan.appendChild(checkBox);
-    divCheckSpan.appendChild(span);
-    divBtnExcluir.appendChild(btnExcluir);
-    itemLista.appendChild(divCheckSpan);
-    itemLista.appendChild(divBtnExcluir);
-    minhaLista.appendChild(itemLista);
 
     inputTask.value = "";
     inputTask.focus();
 }
 
-function excluirItemLista(minhaLista, itemLista){
-    minhaLista.removeChild(itemLista);
-}
-
-function itemListaConcluido(span, checkBox){
-    if(checkBox.checked){
-        span.classList.add("concluido");
-    }else{
-        span.classList.remove("concluido");
+function excluirTarefa(id) {
+    for (let i = 0; i < arrayLista.length; i++) {
+      if (arrayLista[i].id == id) {
+        if (confirm("Deseja realmente excluir essa tarefa?")) {
+        arrayLista.splice(i, 1);
+        alert("Tarefa excluída com sucesso!");
+        criarItemLista();
+        break;
+        }
+      }
     }
 }
 

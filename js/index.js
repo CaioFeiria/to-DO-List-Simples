@@ -30,16 +30,16 @@ inputTask.addEventListener("keydown", (evento) => {
 });
 
 inputDescricao.addEventListener("keydown", (evento) => {
-    if (evento.key === "Enter") {
-      if (inputTask.value !== "") {
-        erroInputVazio();
-        criarTarefa();
-        criarItemLista();
-      } else {
-        erroInputVazio();
-      }
+  if (evento.key === "Enter") {
+    if (inputTask.value !== "") {
+      erroInputVazio();
+      criarTarefa();
+      criarItemLista();
+    } else {
+      erroInputVazio();
     }
-  });
+  }
+});
 
 function criarTarefa(checkBox = false) {
   const checkDescricao = document.getElementById("checkDescricao");
@@ -79,13 +79,11 @@ function criarItemLista() {
       span.classList.add("concluido");
     }
 
-    span.textContent = `${tarefa.task} ${tarefa.descricao}`;
+    span.textContent = `${tarefa.task} - ${tarefa.descricao}`;
 
     btnEditar.classList.add("btn_editar");
     btnEditar.addEventListener("click", () => {
-      const modalEditar = new bootstrap.Modal(
-        document.getElementById("editarTarefaModal")
-      );
+      const modalEditar = new bootstrap.Modal(document.getElementById("editarTarefaModal"));
       modalEditar.show();
 
       tarefaEditando = tarefa;
@@ -100,9 +98,7 @@ function criarItemLista() {
     btnExcluir.classList.add("btn_excluir");
     btnExcluir.addEventListener("click", () => {
       if (tarefa.check === false) {
-        const modalExcluir = new bootstrap.Modal(
-          document.getElementById("modalExcluir")
-        );
+        const modalExcluir = new bootstrap.Modal(document.getElementById("modalExcluir"));
         modalExcluir.show();
       } else {
         excluirTarefa(tarefa.id);
@@ -143,9 +139,7 @@ btnSalvar.addEventListener("click", () => {
 
     criarItemLista();
 
-    const modalEditar = bootstrap.Modal.getInstance(
-      document.getElementById("editarTarefaModal")
-    );
+    const modalEditar = bootstrap.Modal.getInstance(document.getElementById("editarTarefaModal"));
     modalEditar.hide();
 
     tarefaEditando = null;
@@ -155,9 +149,7 @@ btnSalvar.addEventListener("click", () => {
 function excluirTarefa(id) {
   for (let i = 0; i < arrayLista.length; i++) {
     if (arrayLista[i].id == id) {
-      const modalConfirmarExcluir = new bootstrap.Modal(
-        document.getElementById("modalConfirmarExcluir")
-      );
+      const modalConfirmarExcluir = new bootstrap.Modal(document.getElementById("modalConfirmarExcluir"));
       modalConfirmarExcluir.show();
 
       document.getElementById("btnConfirmarExcluir").onclick = function () {
@@ -195,7 +187,6 @@ function erroInputVazio() {
       spanMensagem.classList.add("span_erro");
       divPai.appendChild(spanMensagem);
     }
-
   });
 
   inputTask.focus();

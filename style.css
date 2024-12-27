@@ -11,7 +11,7 @@
 #container_form {
   background-color: white;
   border-radius: 20px;
-  height: 17.2rem;
+  height: 18.4rem;
   padding-bottom: 14rem;
 }
 
@@ -27,6 +27,7 @@
 
 input[type="text"] {
   font-size: 15px;
+  margin-bottom: 3px;
 }
 
 #btn_add {
@@ -40,9 +41,9 @@ input[type="text"] {
   bottom: 0;
 }
 
-.btnAddComErroSpan{
-    height: 60.5% !important;
-    bottom: 24px !important;
+.btnAddComErroSpan {
+  height: 60.5% !important;
+  bottom: 24px !important;
 }
 
 #btn_add > img {

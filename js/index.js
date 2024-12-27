@@ -48,7 +48,7 @@ function criarTarefa(checkBox = false) {
     id: ++idTarefa,
     task: inputTask.value,
     check: checkBox,
-    descricao: checkDescricao.checked ? inputDescricao.value : "",
+    descricao: checkDescricao.checked ? inputDescricao.value : ""
   };
 
   arrayLista.push(tarefa);

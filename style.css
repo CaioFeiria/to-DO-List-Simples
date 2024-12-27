@@ -71,6 +71,7 @@ input[type="text"] {
 
 #checkDescricao:checked ~ #container_descricao {
   display: block;
+  padding-top: 8px;
 }
 
 #minhaLI {
